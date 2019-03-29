@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MHFS Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/style.css" />
+     
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+        @media (max-width: 980px) {
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+        #pageDataCount{
+        	width:50px;
+        }
+         input[type="text"] {
+        	width: 19%;
+        }
+        
+        
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Glyphicons Halflings", "Microsoft YaHei";
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        a,a:hover,label,input[type="checkbox"]{
+            cursor: pointer;
+        }
+        .clearfix:after{
+            content: '';
+            height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        .clearfix{
+            zoom: 1;
+        }
+        a{
+            text-decoration: none;
+        }
+        button:hover{
+            background: #1c7ecf;
+            cursor: pointer;
+        }
+        .graybox{
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.6);
+            position: fixed;
+            top:0;
+            left: 0;
+            z-index: 9;
+        }
+        .popbox{
+            width: 600px;
+            padding-bottom: 30px;
+            border-radius: 6px;
+            background: #FFFFff;
+            position: absolute;
+            left: 50%;
+            margin-left: -250px;
+            top:18%;
+            z-index: 19;
+        }
+        .poptop{
+            width: 100%;
+            height: 120px;
+            line-height: 120px;
+            text-align: center;
+            border-bottom: 1px solid #F2F2F2;
+            position: relative;
+        }
+        .poptop h3{
+            font-size:32px;
+            font-weight: 600;
+            color:#749dcf;
+        }
+        .poptop a.close a.fclose{
+            position: absolute;
+            right:0;
+            top:0;
+            font-size: 20px;
+            font-weight: bold;
+            width: 36px;
+            height: 36px;
+            background: url("images/popbox-close.png") center no-repeat;
+        }
+        .popcon{
+            padding: 20px 50px;
+        }
+        .popcon .group{
+            position: relative;
+        }
+        .popcon .group  input[type="text"]{
+            color: #999999;
+        }
+        .popcon .group i{
+            position: absolute;
+            left: 12px;
+            top:28px;
+            font-size: 20px;
+            color: #bbbbbb;
+        }
+        .popcon input[type="text"]{
+            width:100%;
+            height: 36px;
+            line-height: 36px;
+            border-radius:26px;
+            margin-top:20px;
+            padding:0 10px 0 40px;
+            border:none;
+            background: #f0f0f0;
+        }
+        
+         .popcon input[type="password"]{
+            width:100%;
+            height: 36px;
+            line-height: 36px;
+            border-radius:26px;
+            margin-top:20px;
+            padding:0 10px 0 40px;
+            border:none;
+            background: #f0f0f0;
+        }
+        .popcon input:focus{
+            outline: none;
+            background: #DDDDDD;
+        }
+        
+        .popcon .group input:focus+i{
+            color: #749dcf;
+        }
+        .popcon .remember{
+            font-size: 12px;
+            margin-top: 15px;
+            color: #749dcf;
+        }
+        .popcon .remember .remember-con{
+            width:50%;
+            display: block;
+            float: left;
+        }
+        .popcon .remember .code:hover{
+            text-decoration: underline;
+            color: #749dcf;
+        }
+        .popcon .remember .fa-question-circle{
+            color: #749dcf;
+            margin-right:3px;
+        }
+        .divbtn{
+            width: 260px;
+            margin:20px auto 0;
+         }
+        .divbtn .btn{
+            display: block;
+            float: left;
+            width:120px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            border-radius:6px;
+            background: #eeeeee;
+            color: #464646;
+        }
+        .divbtn .btn:hover{
+            background: #DDDDDD;
+        }
+        .divbtn .ok{
+            background: #749dcf;
+            margin-left: 20px;
+            color: #FFFFff;
+        }
+        .divbtn .ok:hover{
+            background: #5e8ecf;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align:center; height: 100px;margin:0 auto; width: 80%">
+	<h1>MHFS Recycle bin</h1>
+	<div style="float: right;">
+		<!-- <a id="changePwd" href="javascript:void(0);">change the password</a> -->
+		&nbsp;&nbsp; 
+		<a id="quit" href="home.html">back</a>
+	</div>
+</div>
+<div class="form-inline definewidth m20" style="text-align:center;">  
+	username:&nbsp;&nbsp; 
+	<input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">
+	&nbsp;&nbsp; 
+	keyword:&nbsp;&nbsp; 
+	<input type="text" name="keyword" id="keyword" class="abc input-default" placeholder="" value="">
+	&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary" id="btn_search">search</button>
+    &nbsp;&nbsp;
+    <button type="button" class="btn btn-primary" id="btn_clear">clear</button>
+    &nbsp;&nbsp;
+    <!-- <button type="button" class="btn btn-primary" id="btn_private">private space</button>
+    &nbsp;&nbsp;
+   <button type="button" class="btn btn-primary" id="btn_upload">upload file</button> -->
+</div>
+
+<br>
+<table class="table table-bordered table-hover definewidth m10" id="tab" style="text-align:center;width: 80%"></table>
+<!--  
+<div class="mypop" style="display: none">
+    <div class="graybox" ></div>
+    <div class="popbox">
+        <div class="poptop">
+            <h3>Change The Password</h3>
+            <a href="#" class="close"></a>
+        </div>
+        <div class="popcon">
+            <div>
+                <div class="group">
+                    <input id="op" type="password" placeholder="old passwrod">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="group">
+                    <input id="np1" type="password" placeholder="new password">
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div class="group">
+                    <input id="np2" type="password" placeholder="confirm password">
+                    <i class="fa fa-lock"></i>
+                </div>
+            </div>
+        </div>
+        <div class="divbtn clearfix">
+            <a href="#" class="btn" id="cancel">CANCEL</a>
+            <a href="javascript:void(0);" onclick="changePwd()" class="btn ok" id="ok">OK</a>
+        </div>
+    </div>
+</div>
+-->
+<!--  
+<div class="uploadfile" style="display: none">
+    <div class="graybox" ></div>
+    <div class="popbox">
+        <div class="poptop">
+            <h3>Upload File</h3>
+            <a href="#" class="fclose"></a>
+        </div>
+        <div class="popcon">
+            <div>
+                <div class="group">
+                    <input type="hidden" name="file_base64" id="file_base64">
+				    <input type="file" id="fileup" value="Select File" id="file1"> 
+				    &nbsp;&nbsp;
+				    <input type="checkbox" id="cx"> private
+				    <i class="fa fa-lock"></i>
+                </div>
+                
+            </div>
+        </div>
+        <div class="divbtn clearfix">
+            <a href="#" class="btn" id="fcancel">CANCEL</a>
+            <a href="javascript:void(0);" onclick="upload()" class="btn ok" id="ok">OK</a>
+        </div>
+    </div>
+</div>
+-->
+<!-- <form onsubmit="return false;">
+    <input type="hidden" name="file_base64" id="file_base64">
+    <input type="file" id="fileup">
+    <input type="submit" value="submit" onclick="upload()">
+</form> -->
+
+
+ 
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script> 
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/ckform.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/trash.js"></script>
+
+</body>
+</html>
